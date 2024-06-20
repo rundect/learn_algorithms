@@ -1,8 +1,12 @@
-from typing import List
+from typing import List, Tuple, Union
 
 
 class Solution:
-    def two_sum(self, nums: List[int], target: int) -> List[int]:
+    def two_sum(
+            self,
+            nums: Union[Tuple[int, int, int, int], Tuple[int, int, int], Tuple[int, int]],
+            target: int
+    ) -> List[int]:
         hashmap = {}
         for i in range(len(nums)):
             complement = target - nums[i]
@@ -11,17 +15,13 @@ class Solution:
             hashmap[nums[i]] = i
 
 
-nums = [2, 7, 11, 15]
-target = 9
-s = Solution()
-print(s.two_sum(nums, target))
+nums_dict = {
+    (2, 7, 11, 15): 9,
+    (3, 2, 4): 6,
+    (3, 3): 6
+}
 
-nums = [3, 2, 4]
-target = 6
-s = Solution()
-print(s.two_sum(nums, target))
 
-nums = [3, 3]
-target = 6
-s = Solution()
-print(s.two_sum(nums, target))
+for nums, target in nums_dict.items():
+    s = Solution()
+    print(s.two_sum(nums, target))

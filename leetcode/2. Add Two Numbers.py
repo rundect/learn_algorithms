@@ -26,43 +26,36 @@ class Solution:
         return init_head.next
 
 
-node_1 = ListNode(2)
-node_1.next = ListNode(4)
-node_1.next.next = ListNode(3)
-
-node_2 = ListNode(5)
-node_2.next = ListNode(6)
-node_2.next.next = ListNode(4)
-
-solution = Solution()
-s = solution.add_two_numbers(node_1, node_2)
-print([s.val, s.next.val, s.next.next.val])
+def create_list_node(values_list):
+    init_head = ListNode()
+    curr = init_head
+    for i in values_list:
+        new_node = ListNode(i)
+        curr.next = new_node
+        curr = new_node
+    return init_head.next
 
 
-node_1 = ListNode(9)
-node_1.next = ListNode(9)
-node_1.next.next = ListNode(9)
-node_1.next.next.next = ListNode(9)
-node_1.next.next.next.next = ListNode(9)
-node_1.next.next.next.next.next = ListNode(9)
-node_1.next.next.next.next.next.next = ListNode(9)
+def print_all_links(linked_list):
+    list_for_print = []
+    end_of_linked_list = False
+    while not end_of_linked_list:
+        list_for_print.append(linked_list.val)
+        linked_list = linked_list.next
 
-node_2 = ListNode(9)
-node_2.next = ListNode(9)
-node_2.next.next = ListNode(9)
-node_2.next.next.next = ListNode(9)
 
-solution = Solution()
-s = solution.add_two_numbers(node_1, node_2)
-print(
-    [
-        s.val,
-        s.next.val,
-        s.next.next.val,
-        s.next.next.next.val,
-        s.next.next.next.next.val,
-        s.next.next.next.next.next.val,
-        s.next.next.next.next.next.next.val,
-        s.next.next.next.next.next.next.next.val,
-    ]
-)
+# node_1 = ListNode(2)
+# node_1.next = ListNode(4)
+# node_1.next.next = ListNode(3)
+#
+# node_2 = ListNode(5)
+# node_2.next = ListNode(6)
+# node_2.next.next = ListNode(4)
+# print([s.val, s.next.val, s.next.next.val])
+
+def test_one():
+    node_1 = create_list_node([9, 9, 9, 9, 9, 9, 9])
+    node_2 = create_list_node([9, 9, 9, 9])
+    solution = Solution()
+    s = solution.add_two_numbers(node_1, node_2)
+    assert print_all_links(s) == [8, 9, 9, 9, 0, 0, 0, 1]
