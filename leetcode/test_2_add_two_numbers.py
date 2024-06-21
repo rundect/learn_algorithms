@@ -1,4 +1,3 @@
-# Definition for singly-linked list.
 from typing import Optional
 
 
@@ -9,7 +8,8 @@ class ListNode:
 
 
 class Solution:
-    def add_two_numbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+    @staticmethod
+    def add_two_numbers(l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
         init_head = ListNode()
         current_node = init_head
         carry = 0

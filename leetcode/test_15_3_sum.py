@@ -5,24 +5,23 @@ from typing import List
 class Solution:
     def three_sum(self, nums: List[int]) -> List[List[int]]:
         nums.sort()
-        max_index = len(nums) - 1
-        list_of_triplets = []
-        for i in range(len(nums)):
-            if i + 2 > max_index:
-                break
-            for j in range(i + 1, len(nums)):
-                if j > max_index:
-                    break
-                for k in range(j + 1, len(nums)):
-                    duplicate = False
-                    if k > max_index:
-                        break
-                    if nums[i] + nums[j] + nums[k] == 0:
-                        if [nums[i], nums[j], nums[k]] in list_of_triplets:
-                            duplicate = True
-                        if not duplicate:
-                            list_of_triplets.append([nums[i], nums[j], nums[k]])
-        return list_of_triplets
+        n, result = len(nums), []
+        for i in range(n):
+            if i > 0 and nums[i] == nums[i - 1]:
+                continue
+            target = nums[i] * -1
+            s, e = i + 1, n - 1
+            while s < e:
+                if nums[s] + nums[e] == target:
+                    result.append([nums[i], nums[s], nums[e]])
+                    s = s + 1
+                    while s < e and nums[s] == nums[s - 1]:
+                        s = s + 1
+                elif nums[s] + nums[e] < target:
+                    s = s + 1
+                else:
+                    e = e - 1
+        return result
 
 
 class Tests:
