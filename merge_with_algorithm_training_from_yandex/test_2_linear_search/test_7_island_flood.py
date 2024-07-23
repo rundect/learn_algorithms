@@ -1,3 +1,5 @@
+import pytest
+
 
 def island_flood(h):
     maxpos = 0
@@ -18,23 +20,14 @@ def island_flood(h):
     return ans
 
 
-class Tests:
-    def test_example_1(self):
-        h = [3, 1, 4, 3, 5, 1, 1, 3, 1]
-        s = island_flood(h)
-        assert s == 7
-
-    def test_example_2(self):
-        h = [1, 0, 1]
-        s = island_flood(h)
-        assert s == 1
-
-    def test_example_3(self):
-        h = [0, 1, 0]
-        s = island_flood(h)
-        assert s == 0
-
-    def test_example_4(self):
-        h = []
-        s = island_flood(h)
-        assert s == 0
+@pytest.mark.parametrize(
+    ("input", "expected"),
+    [
+        ([3, 1, 4, 3, 5, 1, 1, 3, 1], 7),
+        ([1, 0, 1], 1),
+        ([0, 1, 0], 0),
+        ([], 0),
+    ],
+)
+def test_example(input, expected):
+    assert island_flood(input) == expected

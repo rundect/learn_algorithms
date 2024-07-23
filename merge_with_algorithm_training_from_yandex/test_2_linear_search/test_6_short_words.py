@@ -1,3 +1,5 @@
+import pytest
+
 
 def short_words(words):
     minlen = len(words[0])
@@ -11,18 +13,13 @@ def short_words(words):
     return ' '.join(ans)
 
 
-class Tests:
-    def test_example_1(self):
-        words = ['aa', 'b', 'cc', 'd']
-        s = short_words(words)
-        assert s == 'b d'
-
-    def test_example_2(self):
-        words = ['a', 'b', 'c']
-        s = short_words(words)
-        assert s == 'a b c'
-
-    def test_example_3(self):
-        words = ['a', '']
-        s = short_words(words)
-        assert s == ''
+@pytest.mark.parametrize(
+    ("input", "expected"),
+    [
+        (['aa', 'b', 'cc', 'd'], 'b d'),
+        (['a', 'b', 'c'], 'a b c'),
+        (['a', ''], ''),
+    ],
+)
+def test_example(input, expected):
+    assert short_words(input) == expected

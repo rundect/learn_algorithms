@@ -1,3 +1,5 @@
+import pytest
+
 
 def find_min_even(seq):
     ans = -1
@@ -9,28 +11,15 @@ def find_min_even(seq):
     return ans
 
 
-class Tests:
-    def test_example_1(self):
-        seq = [2, 4, 6]
-        s = find_min_even(seq)
-        assert s == 2
-
-    def test_example_2(self):
-        seq = [3, 1]
-        s = find_min_even(seq)
-        assert s == -1
-
-    def test_example_3(self):
-        seq = [-1, -2]
-        s = find_min_even(seq)
-        assert s == -2
-
-    def test_example_4(self):
-        seq = [0, 2]
-        s = find_min_even(seq)
-        assert s == 0
-
-    def test_example_5(self):
-        seq = []
-        s = find_min_even(seq)
-        assert s == -1
+@pytest.mark.parametrize(
+    ("input", "expected"),
+    [
+        ([2, 4, 6], 2),
+        ([3, 1], -1),
+        ([-1, -2], -2),
+        ([0, 2], 0),
+        ([], -1),
+    ],
+)
+def test_example(input, expected):
+    assert find_min_even(input) == expected
