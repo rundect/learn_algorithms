@@ -26,8 +26,9 @@ def delete(x):
 def test_example():
     add(17)
     add(7)
+    add(17)
     add(27)
     assert find(7) is True
     assert find(37) is False
     delete(17)
-    assert my_set == [[], [], [], [], [], [], [], [27, 7], [], []]
+    assert my_set == [[], [], [], [], [], [], [], [27, 7, 17], [], []]
