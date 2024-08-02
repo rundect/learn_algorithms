@@ -18,6 +18,8 @@ def best_team_sum(players):
 @pytest.mark.parametrize(
     ("input", "expected"),
     [
+        ([1, 1, 3], 4),
+        ([1, 1, 3, 3, 4, 6], 16),
         ([1, 1, 3, 3, 4, 6, 11], 17),
     ],
 )
