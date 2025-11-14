@@ -10,3 +10,7 @@
 
 ### 3. grokking_algorithms  
 ### https://www.manning.com/books/grokking-algorithms
+
+sudo apt install python3-pip
+sudo apt install python3-venv
+pip install uv
