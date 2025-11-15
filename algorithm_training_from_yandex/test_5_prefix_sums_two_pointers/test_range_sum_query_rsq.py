@@ -8,9 +8,9 @@ def make_prefix_sum(nums):
     return prefix_sum
 
 
-def rsq(nums, l, r):
+def rsq(nums, left, right):
     prefix_sum = make_prefix_sum(nums)
-    return prefix_sum[r] - prefix_sum[l]
+    return prefix_sum[right] - prefix_sum[left]
 
 
 @pytest.mark.parametrize(

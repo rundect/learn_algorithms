@@ -11,9 +11,9 @@ def make_prefix_zeroes(nums):
     return prefix_zeroes
 
 
-def count_zeroes(nums, l, r):
+def count_zeroes(nums, left, right):
     prefix_sum = make_prefix_zeroes(nums)
-    return prefix_sum[r] - prefix_sum[l]
+    return prefix_sum[left] - prefix_sum[left]
 
 
 @pytest.mark.parametrize(
